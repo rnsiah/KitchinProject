@@ -1,0 +1,42 @@
+{% extends "cooked/base.html" %}
+
+{% block content %}
+
+<h1>Welcome to the Kitchn</h1>
+
+<div class='meal_list'>
+    {% for meal in meals %}
+      <div class ='meal_details'>
+      <h2>Meal 1 {{ meal.name }}</h2>
+      <p>{{ meal.description }}</p>
+      <img src="{{ meal.image_url }}" alt="Shrimp Fried Rice" height='350' width='350'>
+
+      </div>
+        {% endfor %}
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+{% comment %} {% extends "base.html" %} {% block content %}
+
+
+<center><h1>In Rotation</h1></center>
+
+<center><p><a href="{% url 'add_albums' %}">Add New Album</a></p></center>
+
+
+<div class='albumlist'>
+
+	{% for album in albums %}
+	  <div class='albumdetails'>
+		<h2>{{ album.album_title }}</h2>
+		<img src='{{ album.image_url }}' height="350" width="350">
+    <h3>{{ album.artist_name}}</h3>
+    <h4>Released: {{ album.date_released}}</h4>
+    <p>
+      <a href="{% url 'edit_album' pk=album.pk %}">Edit Album</a>< {% endcomment %}
