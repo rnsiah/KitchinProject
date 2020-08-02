@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login
 from .models import Meal, Kitchn
-
+from .forms import KitchenForm
 
 def signupuser(request):
     if request.method=='GET':
@@ -26,7 +26,19 @@ def home(request):
     meals = Meal.objects.all()
     return render(request, 'cooked/home.html', context={'meals':meals})
 
-# def all_meals(request):
-#     meals = Meal.objects.all()
-#     return render(request, 'cooked/home.html', 
-#     context= {'meals': meals})
+def openkitchen(request):
+    if request.method == 'GET': 
+        return render(request, 'cooked/openkitchen.html', {'form':KitchenForm()})
+
+    else:
+        form = KitchenForm(data=request.POST)
+        newKitchen = form.save(commit=False)
+        newKitchen.user=request.user
+        newKitchen.save()
+        return redirect(to='home') 
+
+    #return render(request, "cooked/openkitchen.html", {"form": form}) 
+
+
+
+    

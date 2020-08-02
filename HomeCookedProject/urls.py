@@ -26,4 +26,8 @@ urlpatterns = [
 
 
     path('home', cooked_views.home, name='home'),
+
+    path('openkitchen', cooked_views.openkitchen, name='openkitchen')
+
+    #path('viewmeals'), 
 ]
