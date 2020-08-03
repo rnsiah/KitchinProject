@@ -7,6 +7,10 @@ class Kitchn(models.Model):
     vendor_email=models.EmailField(max_length=254, blank=False, null=True)
     address = models.CharField(max_length=200, blank=False, null =True)
 
+    def __str__(self):
+        return self.legal_name
+    
+
 
 
 class Meal(models.Model):
