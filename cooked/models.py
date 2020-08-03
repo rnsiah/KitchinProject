@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 class Kitchn(models.Model):
     legal_name = models.CharField(max_length=50, blank=False, null=True)
@@ -14,7 +15,7 @@ class Meal(models.Model):
     description = models.TextField(blank=False, null=False)
     review = models.CharField(max_length=100, blank=True, null=True)
     image_url = models.TextField(null= True, blank=True)
-
+    price = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False)
 
     def __str__(self):
         return self.name

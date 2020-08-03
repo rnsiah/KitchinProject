@@ -2,6 +2,7 @@
 {% block content %}
 Welcome to KitchIns!
 
+{% if user.is_authenticated %}
 <form method = 'POST'>
 {% csrf_token %}
 {{ form.as_p }}
@@ -9,5 +10,9 @@ Welcome to KitchIns!
 
 </form>
 
+{% else %} Hello!
 
-{% endblock %}
+
+{% endif %}
+
+{% endblock %} 
