@@ -23,6 +23,8 @@ urlpatterns = [
 
     #auth
     path('signup/', cooked_views.signupuser, name='signupuser'),
+    path('logout/', cooked_views.logout, name='logoutuser'),
+    path('signout/', cooked_views.sigout, name='signoutuser'),
 
 
     path('home', cooked_views.home, name='home'),

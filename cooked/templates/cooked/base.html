@@ -2,7 +2,7 @@
 {% if user.is_authenticated %}
 
 Logged in as {{ user.username }}
-<a href="#">Logout</a>
+<a href="{% url 'Logout' %}">Logout</a>
 
 {% else %}
 <a href="#">Login</a>
@@ -13,3 +13,10 @@ Logged in as {{ user.username }}
 <br>
 {% block content %}
 {% endblock%}
+
+<br>
+
+
+form.save(commit=false)
+newKitchen.user=request.user
+newKitchen.save()

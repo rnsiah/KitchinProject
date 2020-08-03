@@ -26,7 +26,7 @@ def home(request):
     meals = Meal.objects.all()
     return render(request, 'cooked/home.html', context={'meals':meals})
 
-# def all_meals(request):
-#     meals = Meal.objects.all()
-#     return render(request, 'cooked/home.html', 
-#     context= {'meals': meals})
+def logoutuser(request):
+    if request.method=='POST':
+        pass
+
