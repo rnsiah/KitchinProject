@@ -29,5 +29,4 @@ urlpatterns = [
 
     path('openkitchen', cooked_views.openkitchen, name='openkitchen')
 
-    #path('viewmeals'), 
 ]
