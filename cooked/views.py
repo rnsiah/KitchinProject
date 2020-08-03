@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from .models import Meal, Kitchn
-from .forms import KitchenForm
+from .forms import KitchenForm, MealForm
 
 def signupuser(request):
     if request.method=='GET':
@@ -54,3 +54,47 @@ def logoutuser(request):
     if request.method=='POST':
         logout(request)
         return redirect('kitchin')
+
+
+def loginuser(request):
+    if request.method=='GET':
+        return render(request, 'cooked/loginuser.html', {'form':AuthenticationForm()})
+    else:
+        user= authenticate(request, username=request.POST['username'], password=request.POST['password'])
+        if user is None:
+            return render(request, 'cooked/loginuser.html', {'form':AuthenticationForm(), 'error':'Username and password do not match'})
+        else:
+            login(request, user)
+            return redirect('home')
+            
+
+
+def createmeal(request):
+    if request.method == 'GET': 
+        return render(request, 'cooked/createmeal.html', {'form':MealForm()})
+
+    else:
+        form = MealForm(data=request.POST)
+        newMeal = form.save(commit=False)
+        newMeal.user=request.user
+        newMeal.kitchen = get_kitchen_for_user(request)
+        newMeal.save()
+        return redirect(to='createmeal') 
+
+    #return render(request, "cooked/openkitchen.html", {"form": form}) 
+
+
+def all_kitchens(request):
+    kitchens = Kitchn.objects.all()
+    return render(request, 'cooked/allkitchens.html', context={'kitchens':kitchens})
+
+
+
+def get_kitchen_for_user(request):
+    """
+    Get's kitchen for user
+    """
+ 
+    kitchen = Kitchn.objects.filter(user=request.user)[0]
+    return kitchen
+ 

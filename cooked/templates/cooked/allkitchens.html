@@ -1,0 +1,22 @@
+{% extends "cooked/base.html" %}
+
+{% block content %}
+
+<h1>Welcome to the Kitchn</h1>
+
+<div class='meal_list'>
+    {% for kitchen in kitchens %}
+      <div class ='meal_details'>
+      <h2>{{ kitchen.legal_name }}</h2>
+      <p>{{ kitchen.email }}</p>
+      <br>
+      <p> {{ kitchen.address }}</p>
+      <br>
+
+      </div>
+        {% endfor %}
+</div>
+
+
+
+{% endblock %}
