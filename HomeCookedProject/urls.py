@@ -27,7 +27,14 @@ urlpatterns = [
 
     path('home', cooked_views.home, name='home'),
 
-    path('openkitchen', cooked_views.openkitchen, name='openkitchen')
+    path('openkitchen', cooked_views.openkitchen, name='openkitchen'),
+
+    path('cooked/<int:pk>/meal_detail/', cooked_views.view_meal, name='meal_detail'),
+
+    # path('albums/<int:pk>/edit/', mymusic_views.edit_album, name='edit_album'),
 
     #path('viewmeals'), 
+
+    #   path('albums/<int:pk>/', mymusic_views.view_album, name='view_album')
+
 ]

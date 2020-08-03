@@ -10,6 +10,10 @@
       <h2>Meal 1 {{ meal.name }}</h2>
       <p>{{ meal.description }}</p>
       <img src="{{ meal.image_url }}" alt="Shrimp Fried Rice" height='350' width='350'>
+      <br>
+      <p>Price: {{ meal.price }}</p>
+      <br>
+      <a href="{% url 'meal_detail' pk=meal.pk %}">Order Now</a>
 
       </div>
         {% endfor %}

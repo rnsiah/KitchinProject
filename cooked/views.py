@@ -39,6 +39,12 @@ def openkitchen(request):
 
     #return render(request, "cooked/openkitchen.html", {"form": form}) 
 
+def view_meal(request, pk):
+    meal = get_object_or_404(Meal, pk=pk) 
+    
 
+    return render(request, "cooked/meal_detail.html",
+
+                  {"meal": meal})
 
     
