@@ -24,7 +24,7 @@ urlpatterns = [
     #auth
     path('signup/', cooked_views.signupuser, name='signupuser'),
     path('logout/', cooked_views.logoutuser, name='logoutuser'),
-    path('signup/', cooked_views.signupuser, name='signupuser'),
+    path('login/', cooked_views.loginuser, name='loginuser'),
 
 
     path('', cooked_views.kitchin, name='kitchin'),
@@ -33,6 +33,10 @@ urlpatterns = [
     path('openkitchen', cooked_views.openkitchen, name='openkitchen'),
 
     path('cooked/<int:pk>/meal_detail/', cooked_views.view_meal, name='meal_detail'),
+
+    path('createmeal', cooked_views.createmeal, name='createmeal'),
+
+    path('allkitchens', cooked_views.all_kitchens, name='allkitchens'),
 
     # path('albums/<int:pk>/edit/', mymusic_views.edit_album, name='edit_album'),
 

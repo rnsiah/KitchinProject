@@ -1,0 +1,18 @@
+{% extends 'cooked/base.html' %}
+{% block content %}
+Create A Meal
+
+{% if user.is_authenticated %}
+<form method = 'POST'>
+{% csrf_token %}
+{{ form.as_p }}
+<button type='submit'>Submit</button>
+
+</form>
+
+{% else %} Hello!
+
+
+{% endif %}
+
+{% endblock %} 

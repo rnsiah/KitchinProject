@@ -7,7 +7,7 @@
 <div class='meal_list'>
     {% for meal in meals %}
       <div class ='meal_details'>
-      <h2>Meal 1 {{ meal.name }}</h2>
+      <h2>{{ meal.name }}</h2>
       <p>{{ meal.description }}</p>
       <img src="{{ meal.image_url }}" alt="Shrimp Fried Rice" height='350' width='350'>
       <br>

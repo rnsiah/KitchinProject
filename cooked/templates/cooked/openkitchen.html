@@ -2,6 +2,12 @@
 {% block content %}
 Welcome to KitchIns!
 
+
+Welcome to Kitch-In, a Microenterprise Home Kitchen Operation in cooperation 
+with the Texas Department of Environmental Health (DEH). Kitch-In is a Cottage Food Program creating sustainable income for food service members for a low monthly fee. 
+Becoming a vendor on Kitch-In 
+ is easy! Just send us your Safe Serve Certification, photos of your kitchen and the meals you want to sell on Kitch-In. Email us at info@Kitch-In.io.
+
 {% if user.is_authenticated %}
 <form method = 'POST'>
 {% csrf_token %}
@@ -9,6 +15,12 @@ Welcome to KitchIns!
 <button type='submit'>Submit</button>
 
 </form>
+<br>
+<br>
+
+
+<a href="{% url 'createmeal' %}">Create A Meal Now </a>
+<br>
 
 {% else %} Hello!
 
