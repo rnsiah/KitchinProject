@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from .models import Meal, Kitchn
 from .forms import KitchenForm
 
@@ -21,6 +21,10 @@ def signupuser(request):
         else:
              return render(request, 'cooked/signupuser.html', {'form':UserCreationForm(), 'error':'The passwords you entered do not match, please update passwords.'})
       
+
+def kitchin(request):
+    return render(request, 'cooked/kitchin.html')
+
 
 def home(request):
     meals = Meal.objects.all()
@@ -46,5 +50,7 @@ def view_meal(request, pk):
     return render(request, "cooked/meal_detail.html",
 
                   {"meal": meal})
-
-    
+def logoutuser(request):
+    if request.method=='POST':
+        logout(request)
+        return redirect('kitchin')
