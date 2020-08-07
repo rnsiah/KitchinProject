@@ -2,19 +2,23 @@
 
 {% block content %}
 
-<h1>Welcome to the Kitchn</h1>
+{% comment %} <div class="container">
+  <!-- The container class is an important w3.CSS class. !--> {% endcomment %}
 
+<center><h1>Welcome To Kitch-In!</h1></center>
+<br>
+<br>
 <div class='meal_list'>
     {% for meal in meals %}
       <div class ='meal_details'>
       <h2>{{ meal.name }}</h2>
+      <img src="{{ meal.image_url }}" alt="Shrimp Fried Rice" height='350' width='400'>
+      <br>
       <p>{{ meal.description }}</p>
-      <img src="{{ meal.image_url }}" alt="Shrimp Fried Rice" height='350' width='350'>
-      <br>
-      <p>Price: {{ meal.price }}</p>
-      <br>
+      <p>Suggested Donation: {{ meal.price }}</p>
       <a href="{% url 'meal_detail' pk=meal.pk %}">Order Now</a>
-
+      <br>
+      <br>
       </div>
         {% endfor %}
 </div>
