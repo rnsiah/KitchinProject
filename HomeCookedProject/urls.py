@@ -32,11 +32,12 @@ urlpatterns = [
 
     path('openkitchen', cooked_views.openkitchen, name='openkitchen'),
 
-    path('cooked/<int:pk>/meal_detail/', cooked_views.view_meal, name='meal_detail'),
+    path('cooked/<int:pk>', cooked_views.view_meal, name='meal_detail'),
 
     path('createmeal', cooked_views.createmeal, name='createmeal'),
 
     path('allkitchens', cooked_views.all_kitchens, name='allkitchens'),
+     path('add_to_cart/<int:pk>', cooked_views.add_to_cart, name='add-to-cart'),
 
     # path('albums/<int:pk>/edit/', mymusic_views.edit_album, name='edit_album'),
 
