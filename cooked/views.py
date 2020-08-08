@@ -3,8 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
-from .models import Meal, Kitchn
+from .models import Meal, Kitchn, Order, Order_Item
 from .forms import KitchenForm, MealForm
+from django.utils import timezone
 
 def signupuser(request):
     if request.method=='GET':
@@ -98,3 +99,22 @@ def get_kitchen_for_user(request):
     kitchen = Kitchn.objects.filter(user=request.user)[0]
     return kitchen
  
+
+def add_to_cart(request, slug):
+    item=get_object_or_404(Meal, slug=slug)
+    order_item=Order_Item.objects.create(item=item)
+    order_qs=Order.objects.filter(user=request.user, ordered=False )
+    if order_qs.exists():
+        order = order_qs
+        #Check if the order item is in the queryset
+        if order.items.filter(item__slug=item.slug).exists():
+            order_item.quantiy += 1
+            order_item.save()
+        else:
+            order.items.add(order_item)
+    else:
+        ordered_date= timezone.now()
+        order=Order.objects.create(user=request.user, ordered_date=ordered_date)
+        order.items.add(order_item)
+        order.save()
+    return redirect('home')

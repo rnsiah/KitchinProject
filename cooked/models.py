@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.contrib.auth.models import User
 
 
+
 class Kitchn(models.Model):
     legal_name = models.CharField(max_length=50, blank=False, null=True)
     date_added=models.DateField(auto_now_add=True)
@@ -24,6 +25,41 @@ class Meal(models.Model):
     image_url = models.TextField(null= True, blank=True)
     price = models.DecimalField(max_digits=5, decimal_places=2, null=False, blank=False)
     kitchen=models.ForeignKey(Kitchn, on_delete=models.CASCADE, default=None, related_name='meals')
+    slug = models.SlugField()
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('cooked:meal', kwargs={"pk": self.pk})
+
+    def get_add_to_cart_url(self):
+        return reverse('cooked:add-to-cart', kwargs={"pk": self.pk})
+
+    
+    
+
+    
+
+
+
+class Order_Item(models.Model):
+    
+    item= models.ForeignKey(Meal, on_delete=models.CASCADE)
+    quantity= models.IntegerField(default=1)
+    
+
+    def __str__(self):
+        return f"{self.quantity}" 
+    
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User,  on_delete=models.CASCADE)
+    items= models.ManyToManyField(Order_Item)
+    start_date= models.DateTimeField(auto_now_add=True)
+    ordered=models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
+    
