@@ -1,7 +1,15 @@
 {% extends "cooked/base.html" %}
+{% load static %}
 {% block content %}
 
-hey
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'cooked/kitchin.css' %}"> 
+</head>
+
+<body>
+<center><h1>Kitch-In...</h1></center>
+<center><h2>Home Cooked In a Heartbeat!</h2></center>
+</body>
 
 {% endblock %}
 
