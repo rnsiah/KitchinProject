@@ -1,20 +1,22 @@
 {% extends 'cooked/base.html' %}
 {% block content %}
-<h2>Welcome to Kitch-In!</h2>
+<h2>Start Your Kitch-In!</h2>
 
 Kitch-In is a Microenterprise Home Kitchen Operation in cooperation with the Texas Department of Environmental Health (DEH). Kitch-In is a Cottage Food Program creating sustainable income for members of the food industry, and novice food makers, alike. During the pandemic, Kitch-In’s founders decided to fill the gap between out-of-work chefs, food service workers, our neighbors working from home who desired fresh, wholesome meals; and children who were going without food due to school closures. 
 
 The Cottage Food Laws passed in 2019, allow individuals to sell certain foods made in home kitchens, without having to get a food manufacturer's license, use a commercial kitchen, or be subject to inspections by state or local health departments.
 
 Kitch-In is a portal for cottage food operations enabling them to sell homemade, delicious meals to friends and neighbors. Kitch-In provides employment opportunities for chefs and professional food preparers. As a bonus, for every meal sold, we provide meals for children in need – from your neighborhood!  
-
-<h3>Let’s Open Your Kitch-In!</h3>
+<br>
+<br>
+<h3> Your Kitch-In</h3>
 Becoming a part of the Kitch-In network is easy: 
 1.	Get familiar with the rules on this page.
 2.	Take the required food handler’s training quiz.
 3.	Create food labels – identifying potential allergens in your meals.
 4.	Get going! Your neighbors are counting on you to provide quality, delicious meals – and we’ll feed a child in need, near you.
-
+<br>
+<br>
 
 <h3>What Are the Requirements For a Cottage Food Operation?</h3>
 Under the newly expanded law, cottage food operations must meet all of the following requirements: 
@@ -23,9 +25,11 @@ Under the newly expanded law, cottage food operations must meet all of the follo
 	Sell no more than $50,000 of such foods annually.
 	Have a current food handler’s card.
 	Package the food so as to prevent contamination, unless the item is too large or bulky to fit conventional packaging, such as a wedding cake.
-	Label the products with the producers’ information, allergen information, and specific language informing the consumer that the food was prepared in an uninspected kitchen.
-
+	Label the products with the producer's information, allergen information, and specific language informing the consumer that the food was prepared in an uninspected kitchen.
+<br>
+<br>
 Texas continues to be one of the friendliest states for small business startups.  To start a cottage food business, there are no permits, fees, or licenses required beyond a basic food handler’s certification.
+
 We do not provide legal advice, however we highly recommend that you take the following into consideration: 
 
 Read the rules of the cottage food law and know the rules and your rights! 
@@ -43,10 +47,14 @@ Pick a business name and register it as a DBA with your county.  This ensures th
 Speak with a tax or legal professional about how to structure your business, whether it be a Sole Proprietorship, LLC, or some other entity.  Your cottage food income is subject to federal taxes the same way any other income is. 
 
 Open a business bank account.
+<br>
+<br>
 
 In addition to the marketing Kitch-In will provide, you may want to set up a web site such as Instagram or Facebook to increase your marketing. Order inexpensive startup business cards from a site like VistaPrint or Zazzle.
 Start selling! Good luck with your new business!
 Any questions? Email us at info@Kitch_In.io
+<br>
+<br>
 
 {% if user.is_authenticated %}
 <form method = 'POST'>
@@ -55,9 +63,6 @@ Any questions? Email us at info@Kitch_In.io
 <button type='submit'>Submit</button>
 
 </form>
-<br>
-<br>
-
 
 <a href="{% url 'createmeal' %}">Create A Meal Now </a>
 <br>
